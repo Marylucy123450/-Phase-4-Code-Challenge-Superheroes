@@ -1,14 +1,30 @@
-h1 = Hero.create(name: "Superman")
-h2 = Hero.create(name: "Batman")
-h3 = Hero.create(name: "Spiderman")
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
+puts 'seed'
+10.times do
+    Power.create(
+       name: Faker::Superhero.power,
+       description: Faker::TvShows::BigBangTheory.quote
+    )
+end
 
-p1 = Power.create(name: "Flight")
-p2 = Power.create(name: "Super Strength")
-p3 = Power.create(name: "Web-slinging")
+10.times do
+    HeroPower.create(
+       strength: ['Weak', 'Average','Strong'].sample,
+       hero_id: rand(1..5),
+       power_id: rand(1..10)
+    )
+end
 
-HeroPower.create(hero: h1, power: p1)
-HeroPower.create(hero: h1, power: p2)
-HeroPower.create(hero: h2, power: p2)
-HeroPower.create(hero: h2, power: p3)
-HeroPower.create(hero: h3, power: p1)
-HeroPower.create(hero: h3, power: p3)
+5.times do
+    Hero.create(
+       name: Faker::Superhero.name,
+        super_name: Faker::Superhero.descriptor
+    )
+end
+puts 'end'

@@ -1,46 +1,573 @@
-  [1m[35m (89.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (83.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (508.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (298.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePowers (20221009150532)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221009150532"]]
+  [1m[36mTRANSACTION (447.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateHeroPowers (20221009151012)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "hero_powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "strength" varchar, "hero_id" integer, "power_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221009151012"]]
+  [1m[36mTRANSACTION (328.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateHeros (20221009151351)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "heros" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "super_name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221009151351"]]
+  [1m[36mTRANSACTION (442.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-24 18:51:00.163379"], ["updated_at", "2023-03-24 18:51:00.163379"]]
+  [1m[36mTRANSACTION (320.4ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateHeros (20230323213854)
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "heros" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "super_name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230323213854"]]
-  [1m[36mTRANSACTION (74.5ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreatePowers (20230323213913)
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230323213913"]]
-  [1m[36mTRANSACTION (75.7ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateHeroPowers (20230323213930)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "hero_powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "hero_id" integer NOT NULL, "power_id" integer NOT NULL, "strength" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a064e6fddd"
-FOREIGN KEY ("hero_id")
-  REFERENCES "heros" ("id")
-, CONSTRAINT "fk_rails_1e7d81986f"
-FOREIGN KEY ("power_id")
-  REFERENCES "powers" ("id")
-)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_hero_powers_on_hero_id" ON "hero_powers" ("hero_id")[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_hero_powers_on_power_id" ON "hero_powers" ("power_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230323213930"]]
-  [1m[36mTRANSACTION (97.3ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-23 21:41:18.535400"], ["updated_at", "2023-03-23 21:41:18.535400"]]
-  [1m[36mTRANSACTION (49.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/heroes" for 127.0.0.1 at 2023-03-24 22:02:44 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/heroes"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-03-24 22:02:46 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for ::1 at 2023-03-24 22:03:30 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.3ms | Allocations: 360)
+Completed 200 OK in 1213ms (Views: 23.7ms | ActiveRecord: 0.0ms | Allocations: 3676)
+
+
+Started GET "/heroes" for ::1 at 2023-03-24 22:03:39 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/heroes"):
+  
+Started GET "/favicon.ico" for ::1 at 2023-03-24 22:03:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:07:12 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:07:13 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:08:28 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:08:31 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:08:32 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:10:10 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:10:11 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:10:12 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:10:13 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroesController
+Did you mean?  HerosController
+               HeroPowersController):
+  
+Started GET "/heroes" for ::1 at 2023-03-24 22:11:39 +0300
+Processing by HeroesController#index as HTML
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heros".* FROM "heros"[0m
+  ↳ app/controllers/heroes_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 628ms (Views: 519.0ms | ActiveRecord: 1.3ms | Allocations: 5924)
+
+
+Started GET "/heroes/:id" for ::1 at 2023-03-24 22:12:14 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/heroes/:id"):
+  
+Started GET "/heroes/:id" for ::1 at 2023-03-24 22:15:52 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/heroes/:id"):
+  
+Started GET "/heroes/:id" for ::1 at 2023-03-24 22:17:17 +0300
+Processing by HeroesController#show as HTML
+  Parameters: {"id"=>":id"}
+  [1m[36mHero Load (0.7ms)[0m  [1m[34mSELECT "heros".* FROM "heros" WHERE "heros"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/heroes_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 404 Not Found in 111ms (Views: 21.2ms | ActiveRecord: 2.4ms | Allocations: 4324)
+
+
+Started GET "/powers" for ::1 at 2023-03-24 22:17:43 +0300
+Processing by PowersController#index as HTML
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers"[0m
+  ↳ app/controllers/powers_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 13ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 2783)
+
+
+Started GET "/powers/:id" for ::1 at 2023-03-24 22:18:05 +0300
+Processing by PowersController#show as HTML
+  Parameters: {"id"=>":id"}
+  [1m[36mPower Load (0.5ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/powers_controller.rb:25:in `find_params'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 404 Not Found in 9ms (Views: 2.7ms | ActiveRecord: 1.6ms | Allocations: 1100)
+
+
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:18:46 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroPowersController
+Did you mean?  HeroesPowersController
+               HeroesController):
+  
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:20:42 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroPowersController
+Did you mean?  HeroesPowersController
+               HeroesController):
+  
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:20:44 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroPowersController
+Did you mean?  HeroesPowersController
+               HeroesController):
+  
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:20:46 +0300
+  
+ActionController::RoutingError (uninitialized constant HeroPowersController
+Did you mean?  HeroesPowersController
+               HeroesController):
+  
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:24:20 +0300
+  
+Zeitwerk::NameError (wrong constant name HeroPowersController.rb inferred by Module from file
+
+  /home/student/Downloads/Superheroes-main (1)/app/controllers/hero_powers_controller.rb.rb
+
+Possible ways to address this:
+
+  * Tell Zeitwerk to ignore this particular file.
+  * Tell Zeitwerk to ignore one of its parent directories.
+  * Rename the file to comply with the naming conventions.
+  * Modify the inflector to handle this case.
+):
+  
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:359:in `rescue in block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:335:in `block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:41:in `block in ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:334:in `set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:106:in `block (2 levels) in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `block in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `synchronize'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:208:in `reload'
+activesupport (7.0.4) lib/active_support/dependencies.rb:79:in `block in clear'
+activesupport (7.0.4) lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+activesupport (7.0.4) lib/active_support/dependencies/interlock.rb:17:in `unloading'
+activesupport (7.0.4) lib/active_support/dependencies.rb:32:in `unload_interlock'
+activesupport (7.0.4) lib/active_support/dependencies.rb:77:in `clear'
+railties (7.0.4) lib/rails/application/finisher.rb:181:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+railties (7.0.4) lib/rails/application/finisher.rb:210:in `block (3 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/reloader.rb:120:in `class_unload!'
+railties (7.0.4) lib/rails/application/finisher.rb:209:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `instance_exec'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `block in make_lambda'
+activesupport (7.0.4) lib/active_support/callbacks.rb:199:in `block (2 levels) in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:687:in `block (2 levels) in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `catch'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `block in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:200:in `block in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:106:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:129:in `run'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:125:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:114:in `run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:78:in `block in run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `tap'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:63:in `run!'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:25:12 +0300
+  
+Zeitwerk::NameError (wrong constant name HeroPowersController.rb inferred by Module from file
+
+  /home/student/Downloads/Superheroes-main (1)/app/controllers/hero_powers_controller.rb.rb
+
+Possible ways to address this:
+
+  * Tell Zeitwerk to ignore this particular file.
+  * Tell Zeitwerk to ignore one of its parent directories.
+  * Rename the file to comply with the naming conventions.
+  * Modify the inflector to handle this case.
+):
+  
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:359:in `rescue in block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:335:in `block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:41:in `block in ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:334:in `set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:106:in `block (2 levels) in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `block in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `synchronize'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:208:in `reload'
+activesupport (7.0.4) lib/active_support/dependencies.rb:79:in `block in clear'
+activesupport (7.0.4) lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+activesupport (7.0.4) lib/active_support/dependencies/interlock.rb:17:in `unloading'
+activesupport (7.0.4) lib/active_support/dependencies.rb:32:in `unload_interlock'
+activesupport (7.0.4) lib/active_support/dependencies.rb:77:in `clear'
+railties (7.0.4) lib/rails/application/finisher.rb:181:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+railties (7.0.4) lib/rails/application/finisher.rb:210:in `block (3 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/reloader.rb:120:in `class_unload!'
+railties (7.0.4) lib/rails/application/finisher.rb:209:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `instance_exec'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `block in make_lambda'
+activesupport (7.0.4) lib/active_support/callbacks.rb:199:in `block (2 levels) in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:687:in `block (2 levels) in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `catch'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `block in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:200:in `block in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:106:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:129:in `run'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:125:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:114:in `run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:78:in `block in run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `tap'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:63:in `run!'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:26:05 +0300
+  
+Zeitwerk::NameError (wrong constant name HeroPowersController.rb inferred by Module from file
+
+  /home/student/Downloads/Superheroes-main (1)/app/controllers/hero_powers_controller.rb.rb
+
+Possible ways to address this:
+
+  * Tell Zeitwerk to ignore this particular file.
+  * Tell Zeitwerk to ignore one of its parent directories.
+  * Rename the file to comply with the naming conventions.
+  * Modify the inflector to handle this case.
+):
+  
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:359:in `rescue in block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:335:in `block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:41:in `block in ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:334:in `set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:106:in `block (2 levels) in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `block in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `synchronize'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:208:in `reload'
+activesupport (7.0.4) lib/active_support/dependencies.rb:79:in `block in clear'
+activesupport (7.0.4) lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+activesupport (7.0.4) lib/active_support/dependencies/interlock.rb:17:in `unloading'
+activesupport (7.0.4) lib/active_support/dependencies.rb:32:in `unload_interlock'
+activesupport (7.0.4) lib/active_support/dependencies.rb:77:in `clear'
+railties (7.0.4) lib/rails/application/finisher.rb:181:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+railties (7.0.4) lib/rails/application/finisher.rb:210:in `block (3 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/reloader.rb:120:in `class_unload!'
+railties (7.0.4) lib/rails/application/finisher.rb:209:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `instance_exec'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `block in make_lambda'
+activesupport (7.0.4) lib/active_support/callbacks.rb:199:in `block (2 levels) in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:687:in `block (2 levels) in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `catch'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `block in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:200:in `block in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:106:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:129:in `run'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:125:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:114:in `run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:78:in `block in run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `tap'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:63:in `run!'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:27:20 +0300
+  
+Zeitwerk::NameError (wrong constant name HeroPowersController.rb inferred by Module from file
+
+  /home/student/Downloads/Superheroes-main (1)/app/controllers/hero_powers_controller.rb.rb
+
+Possible ways to address this:
+
+  * Tell Zeitwerk to ignore this particular file.
+  * Tell Zeitwerk to ignore one of its parent directories.
+  * Rename the file to comply with the naming conventions.
+  * Modify the inflector to handle this case.
+):
+  
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:359:in `rescue in block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:335:in `block in set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:41:in `block in ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader/helpers.rb:27:in `ls'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:334:in `set_autoloads_in_dir'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:106:in `block (2 levels) in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `each'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:105:in `block in setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `synchronize'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:102:in `setup'
+zeitwerk (2.6.1) lib/zeitwerk/loader.rb:208:in `reload'
+activesupport (7.0.4) lib/active_support/dependencies.rb:79:in `block in clear'
+activesupport (7.0.4) lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+activesupport (7.0.4) lib/active_support/dependencies/interlock.rb:17:in `unloading'
+activesupport (7.0.4) lib/active_support/dependencies.rb:32:in `unload_interlock'
+activesupport (7.0.4) lib/active_support/dependencies.rb:77:in `clear'
+railties (7.0.4) lib/rails/application/finisher.rb:181:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+railties (7.0.4) lib/rails/application/finisher.rb:210:in `block (3 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/reloader.rb:120:in `class_unload!'
+railties (7.0.4) lib/rails/application/finisher.rb:209:in `block (2 levels) in <module:Finisher>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `instance_exec'
+activesupport (7.0.4) lib/active_support/callbacks.rb:445:in `block in make_lambda'
+activesupport (7.0.4) lib/active_support/callbacks.rb:199:in `block (2 levels) in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:687:in `block (2 levels) in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `catch'
+activesupport (7.0.4) lib/active_support/callbacks.rb:686:in `block in default_terminator'
+activesupport (7.0.4) lib/active_support/callbacks.rb:200:in `block in halting'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:106:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:129:in `run'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:125:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:114:in `run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:78:in `block in run!'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `tap'
+activesupport (7.0.4) lib/active_support/execution_wrapper.rb:75:in `run!'
+activesupport (7.0.4) lib/active_support/reloader.rb:63:in `run!'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/hero_powers" for ::1 at 2023-03-24 22:28:19 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.4ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 580ms (Views: 8.8ms | ActiveRecord: 1.2ms | Allocations: 4019)
+
+
   [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heros" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Superman"], ["super_name", nil], ["created_at", "2023-03-24 17:56:28.744434"], ["updated_at", "2023-03-24 17:56:28.744434"]]
-  [1m[36mTRANSACTION (73.4ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heros" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Batman"], ["super_name", nil], ["created_at", "2023-03-24 17:56:28.823366"], ["updated_at", "2023-03-24 17:56:28.823366"]]
-  [1m[36mTRANSACTION (58.6ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mHero Create (0.4ms)[0m  [1m[32mINSERT INTO "heros" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Spiderman"], ["super_name", nil], ["created_at", "2023-03-24 17:56:28.888884"], ["updated_at", "2023-03-24 17:56:28.888884"]]
-  [1m[36mTRANSACTION (62.8ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to AddValidationsToHeroPower (20230324175958)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "hero_powers" ADD "strength" varchar[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-03-24 22:35:10 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 43.4ms | Allocations: 559)
+Completed 200 OK in 376ms (Views: 237.9ms | ActiveRecord: 0.0ms | Allocations: 5091)
+
+
+Started GET "/heroes" for 127.0.0.1 at 2023-03-24 22:35:28 +0300
+Processing by HeroesController#index as HTML
+  [1m[36mHero Load (0.6ms)[0m  [1m[34mSELECT "heros".* FROM "heros"[0m
+  ↳ app/controllers/heroes_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 1140ms (Views: 751.3ms | ActiveRecord: 0.6ms | Allocations: 4976)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-03-24 22:35:31 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/heroes/:id" for 127.0.0.1 at 2023-03-24 22:35:59 +0300
+Processing by HeroesController#show as HTML
+  Parameters: {"id"=>":id"}
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heros".* FROM "heros" WHERE "heros"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/heroes_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 404 Not Found in 40ms (Views: 32.2ms | ActiveRecord: 1.6ms | Allocations: 2075)
+
+
+Started GET "/heroes/:id" for 127.0.0.1 at 2023-03-24 22:36:24 +0300
+Processing by HeroesController#show as HTML
+  Parameters: {"id"=>":id"}
+  [1m[36mHero Load (2.7ms)[0m  [1m[34mSELECT "heros".* FROM "heros" WHERE "heros"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/heroes_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 404 Not Found in 10ms (Views: 3.9ms | ActiveRecord: 2.7ms | Allocations: 591)
+
+
+Started GET "/powers" for 127.0.0.1 at 2023-03-24 22:36:36 +0300
+Processing by PowersController#index as HTML
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers"[0m
+  ↳ app/controllers/powers_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 13ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 2802)
+
+
+Started GET "/powers/:id" for 127.0.0.1 at 2023-03-24 22:36:59 +0300
+Processing by PowersController#show as HTML
+  Parameters: {"id"=>":id"}
+  [1m[36mPower Load (0.4ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/powers_controller.rb:25:in `find_params'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 404 Not Found in 8ms (Views: 0.9ms | ActiveRecord: 1.4ms | Allocations: 1083)
+
+
+Started GET "/hero_powers" for 127.0.0.1 at 2023-03-24 22:37:39 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.3ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (19.8ms)
+Completed 200 OK in 45ms (Views: 22.5ms | ActiveRecord: 0.3ms | Allocations: 3451)
+
+
