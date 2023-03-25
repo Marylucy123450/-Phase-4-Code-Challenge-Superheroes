@@ -14,7 +14,9 @@
 
 ## About The Project
 
-An API for tracking heroes and their superpowers.
+An API for tracking heroes and their superpowers.The Superhero Tracker API is a Rails-based API that allows you to track superheroes and their superpowers. It includes three main resources: Hero, Power, and HeroPower. The API provides endpoints for managing these resources, including routes for creating, reading, updating, and deleting data.
+
+
 
  ### The project was built with:
  * Ruby v3.1.4
