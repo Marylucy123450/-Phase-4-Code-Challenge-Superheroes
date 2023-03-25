@@ -54,6 +54,143 @@ Start server with:
 ```
 Open `http://localhost:3000/` in your browser.
 
+Routes
+GET /heroes
+
+  https://superheroes11.onrender.com//heroes
+
+Returns a list of all heroes.
+
+Response
+
+json
+
+    [
+        {
+    "id": 1,
+    "name": "Hulk",
+    "super_name": "The Incredible Hulk",
+    "powers": [
+    {
+    "id": 2,
+    "name": "Flight",
+    "description": "The power to propel oneself through the air."
+    }
+    ]
+    },
+    ]
+
+GET /heroes/:id
+
+https://superheroes11.onrender.com//heroes/2
+
+
+    {
+    "id": 2,
+    "name": "Thor",
+    "super_name": "The God of Thunder",
+    "powers": [
+       {
+      "id": 2,
+      "name": "Flight",
+       "description": "The power to propel oneself through the air."
+      },
+     {
+      "id": 5,
+      "name": "Invisibility",
+     "description": "The ability to become invisible to the naked eye."
+    },
+    {
+     "id": 1,
+      "name": "Super Strength",
+      "description": "The ability to lift and move objects beyond human     capability."
+     },
+     {
+     "id": 3,
+     "name": "Energy Blasts",
+     "description": "The ability to generate and emit powerful energy blasts."
+     }
+     ]
+     }
+
+Returns a specific hero by id, along with their powers.
+
+
+If the hero does not exist:
+
+json
+
+    {
+     "error": "Hero not found"
+    }
+
+GET /powers
+
+https://superheroes11.onrender.com//powers
+
+Returns a list of all powers.
+
+Response
+
+json
+
+    [
+    {
+    "id": 1,
+    "name": "Super Strength",
+    "description": "The ability to lift and move objects beyond human capability."
+    },
+
+    {
+    "id": 2,
+    "name": "Flight",
+    "description": "The power to propel oneself through the air."
+    },
+    ]
+
+
+GET /powers/:id
+
+https://superheroes11.onrender.com//powers/4
+
+Returns a specific power by id.
+
+Response
+
+json
+
+    {
+    "id": 4,
+    "name": "Telekinesis",
+    "description": "The power to move objects with the mind."
+    }
+
+If the power does not exist:
+
+json
+
+    {
+     "error": "Power not found"
+}
+
+PATCH /powers/:id
+
+use postman or Thunder client to test it out
+
+https://superheroes11.onrender.com//powers/4
+
+Updates a specific power by id.
+
+
+
+POST /hero_powers
+
+use postman or Thunder client to test it out
+
+https://superheroes11.onrender.com//hero_powers
+
+Creates a new HeroPower
+
 <!-- LICENSE -->
 ## License
 
