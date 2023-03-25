@@ -3,7 +3,7 @@
 <div align="center">
   <h3 align="center">Phase-4-Code-Challenge</h3>
   <p align="center">
-    An API for tracking heroes and their superpowers.
+    A 'mini' Rails application.
     <br />
     <a href="https://github.com/Marylucy123450/Phase-4-Code-Challenge-Superheroes"><strong>Explore the repository »</strong></a>
     <br />
@@ -13,7 +13,9 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-The process of ideating and planning your app: deciding on your models,  working on an API for tracking heroes and their superpowers.
+
+An API for tracking heroes and their superpowers.
+
  ### The project was built with:
  * Ruby v3.1.4
  * Ruby on Rails v7.0.4
@@ -28,9 +30,8 @@ Rails: 7.0.4
 
 ## Setup
 ~~~bash
-$ git@github.com: https://github.com/Marylucy123450/Phase-4-Code-Challenge-Superheroes
+$ git@github.com:https://github.com/Marylucy123450/Phase-4-Code-Challenge-Superheroes
 $ cd Phase-4-Code-Challenge-Superheroes
-
 ~~~
 
 Install gems with:
