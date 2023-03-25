@@ -1,19 +1,22 @@
 class HeroPowersController < ApplicationController
     def index
-        r=HeroPower.all
-        render json: r
+        hero_powers= HeroPower.all 
+        render json: hero_powers, each_serializer: HeroPowersSerializer
     end
+
     def create
-        hero_powers= HeroPower.create!(hero_powers_params)
-        hero_record = Hero.find(hero_powers.hero_id)
-        render json: hero_record , serializer: ShowHeroPowersSerializer, status: :ok
-    end
-  
-    private
-    def hero_powers_params
-      params.permit(:strength, :hero_id, :power_id)
-    end
-    def render_unproccessable_entity_response(invalid)
-      render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    end
+        hero_power = HeroPower.new(hero_power_params)
+        if hero_power.save
+          render json: hero_power, serializer: HeroPowersSerializer
+        else
+          render json: { errors: hero_power.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+      
+      private
+      
+      def hero_power_params
+        params.require(:hero_power).permit(:strength, :power_id, :hero_id)
+      end
+      
 end
