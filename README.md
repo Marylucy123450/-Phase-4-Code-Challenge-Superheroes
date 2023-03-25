@@ -1,221 +1,61 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<br />
+<div align="center">
+  <h3 align="center">Phase-4-Code-Challenge</h3>
+  <p align="center">
+    An API for tracking heroes and their superpowers.
+    <br />
+    <a href="https://github.com/Marylucy123450/Phase-4-Code-Challenge-Pizzas"><strong>Explore the repository »</strong></a>
+    <br />
+  </p>
+</div>
 
-Things you may want to cover:
+<!-- ABOUT THE PROJECT -->
 
-* Ruby version
+## About The Project
+The process of ideating and planning your app: deciding on your models,  working on an API for tracking heroes and their superpowers.
+ ### The project was built with:
+ * Ruby v3.1.4
+ * Ruby on Rails v7.0.4
 
-* System dependencies
+<!-- GETTING STARTED -->
+## Getting Started
+To get a local copy up and running follow these simple example steps.
 
-* Configuration
+### Prerequisites
+Ruby: 2.7.4 
+Rails: 7.0.4
 
-* Database creation
+## Setup
+~~~bash
+$ git@github.com: https://github.com/Marylucy123450/Phase-4-Code-Challenge-Superheroes
+$ cd Phase-4-Code-Challenge-Superheroes
 
-* Database initialization
+~~~
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-# This is to demostrate my understanding on rails
-
-## Project Guidelines
-Your project should conform to the following set of guidelines:
-
- # Models
-You need to create the following relationships:
-
-- A `Hero` has many `Power`s through `HeroPower`
-- A `Power` has many `Hero`s through `HeroPower`
-- A `HeroPower` belongs to a `Hero` and belongs to a `Power`
-
-# Validations
-
-Add validations to the `HeroPower` model:
-
-- `strength` must be one of the following values: 'Strong', 'Weak', 'Average'
-
-Add validations to the `Power` model:
-
-- `description` must be present and at least 20 characters long
-
-# Routes
-
-Set up the following routes. Make sure to return JSON data in the format
-specified along with the appropriate HTTP verb.
-
-GET /heroes
-
-Return JSON data in the format below:
-
+Install gems with:
 ```
-[  
-
-{ "id": 1, "name": "Kamala Khan", "super_name": "Ms. Marvel" },  
-
-{ "id": 2, "name": "Doreen Green", "super_name": "Squirrel Girl" },  
-
-{ "id": 3, "name": "Gwen Stacy", "super_name": "Spider-Gwen" }
-
-]
+bundle install
 ```
-
-GET /heroes/:id
-
-If the `Hero` exists, return JSON data in the format below:
-
-
-{
-  "id": 1,
-  "name": "Kamala Khan",
-  "super_name": "Ms. Marvel",
-  "powers": [
-    {
-      "id": 1,
-      "name": "super strength",
-      "description": "gives the wielder super-human strengths"
-    },
-    {
-      "id": 2,
-      "name": "flight",
-      "description": "gives the wielder the ability to fly through the skies at supersonic speed"
-    }
-  ]
-}
-
-
-If the `Hero` does not exist, return the following JSON data, along with
-the appropriate HTTP status code:
-
-{   "error": "Hero not found" }
+Setup database with:
+> make sure you have postgresql installed and running on your system
 ```
-
- GET /powers
-
-Return JSON data in the format below:
-
-
-[
-  {
-    "id": 1,
-    "name": "super strength",
-    "description": "gives the wielder super-human strengths"
-  },
-  {
-    "id": 1,
-    "name": "flight",
-    "description": "gives the wielder the ability to fly through the skies at supersonic speed"
-  }
-]
-
-
- GET /powers/:id
-
-If the `Power` exists, return JSON data in the format below:
-
+   rails db:create
+   rails db:migrate
+   rails db:seed
 ```
-{
-  "id": 1,
-  "name": "super strength",
-  "description": "gives the wielder super-human strengths"
-}
+### Usage
+Start server with:
 ```
-
-If the `Power` does not exist, return the following JSON data, along with
-the appropriate HTTP status code:
-
+    rails server or rails s
 ```
-{
-  "error": "Power not found"
-}
-```
+Open `http://localhost:3000/` in your browser.
 
- PATCH /powers/:id
+<!-- LICENSE -->
+## License
 
-This route should update an existing `Power`. It should accept an object with
-the following properties in the body of the request:
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-```
-{
-  "description": "Updated description"
-}
-```
-
-If the `Power` exists and is updated successfully (passes validations), update
-its description and return JSON data in the format below:
-
-```
-{
-  "id": 1,
-  "name": "super strength",
-  "description": "Updated description"
-}
-```
-
-If the `Power` does not exist, return the following JSON data, along with
-the appropriate HTTP status code:
-
-```
-{
-  "error": "Power not found"
-}
-```
-
-If the `Power` is **not** updated successfully (does not pass validations),
-return the following JSON data, along with the appropriate HTTP status code:
-
-```
-{
-  "errors": ["validation errors"]
-}
-```
-
- POST /hero_powers
-
-This route should create a new `HeroPower` that is associated with an
-existing `Power` and `Hero`. It should accept an object with the following
-properties in the body of the request:
-
-```
-{
-  "strength": "Average",
-  "power_id": 1,
-  "hero_id": 3
-}
-```
-
-If the `HeroPower` is created successfully, send back a response with the data
-related to the `Hero`:
-
-```
-{
-  "id": 1,
-  "name": "Kamala Khan",
-  "super_name": "Ms. Marvel",
-  "powers": [
-    {
-      "id": 1,
-      "name": "super strength",
-      "description": "gives the wielder super-human strengths"
-    },
-    {
-      "id": 2,
-      "name": "flight",
-      "description": "gives the wielder the ability to fly through the skies at supersonic speed"
-    }
-  ]
-}
-```
-
-If the `HeroPower` is **not** created successfully, return the following
-JSON data, along with the appropriate HTTP status code:
-
-```
-{
-  "errors": ["validation errors"]
-}
-```
+<!-- CONTACT -->
+## Contact
+Marylucy Atieno  - [marylucyatienoomenda@gmail.com](email)
