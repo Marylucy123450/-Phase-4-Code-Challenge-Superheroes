@@ -723,3 +723,43 @@ Completed 200 OK in 156ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 343
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heros" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Penance IX"], ["super_name", "Gardner"], ["created_at", "2023-03-25 12:57:28.024037"], ["updated_at", "2023-03-25 12:57:28.024037"]]
   [1m[36mTRANSACTION (102.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/hero_powers" for 127.0.0.1 at 2023-03-25 17:50:21 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.2ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 13ms (Views: 4.7ms | ActiveRecord: 0.8ms | Allocations: 3098)
+
+
+Started GET "/hero_powers" for 127.0.0.1 at 2023-03-25 17:51:25 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.2ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.2ms | Allocations: 724)
+
+
+Started GET "/hero_powers" for 127.0.0.1 at 2023-03-25 17:51:27 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.4ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.4ms | Allocations: 741)
+
+
+Started GET "/hero_powers" for 127.0.0.1 at 2023-03-25 17:51:32 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.2ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 724)
+
+
+Started GET "/hero_powers" for 127.0.0.1 at 2023-03-25 17:51:33 +0300
+Processing by HeroPowersController#index as HTML
+  [1m[36mHeroPower Load (0.2ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 724)
+
+

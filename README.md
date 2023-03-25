@@ -5,7 +5,7 @@
   <p align="center">
     An API for tracking heroes and their superpowers.
     <br />
-    <a href="https://github.com/Marylucy123450/Phase-4-Code-Challenge-Pizzas"><strong>Explore the repository »</strong></a>
+    <a href="https://github.com/Marylucy123450/Phase-4-Code-Challenge-Superheroes"><strong>Explore the repository »</strong></a>
     <br />
   </p>
 </div>
